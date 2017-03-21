@@ -16,8 +16,10 @@ function linkedListGenerator(){
 	function add(value) {
 		var newNode =  {};
 		newNode.value = value;
+		newNode.previous = {};
 		newNode.next = null;
 		if(head !== null && head.value !== null && head.next === null) {
+			head.previous = null;
 			head.next = newNode;
 		}
 		if(head === null) {
@@ -27,7 +29,7 @@ function linkedListGenerator(){
 			tail.next = newNode;
 		}
 		tail = newNode;
-		return tail;
+		return head;
 	}
 	function get(number) {
 		var list = getHead();
@@ -80,6 +82,20 @@ function linkedListGenerator(){
 	}
 		return head;
 	}
+	function previous () {
+		list = head.next;
+		var iterate = 0;
+		num = 0;
+		while (get(num) !== tail) {
+			num++;
+			list.previous = get(num - 1);
+			list = list.next;
+			iterate++;
+		} 
+
+	console.log (head);
+	}
+	
 	return {
 		getHead,
 		getTail,
@@ -87,7 +103,18 @@ function linkedListGenerator(){
 		get,
 		remove,
 		insert,
+		previous,
 	};
+
 }
+
+var test = linkedListGenerator();
+test.add(1);
+test.add(2);
+test.add(3);
+test.add(4);
+test.add(5);
+test.previous();
+
 
 
