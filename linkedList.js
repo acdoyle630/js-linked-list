@@ -4,5 +4,86 @@
  * @return {Object} an object exposing methods to be used to manipulate a linked list
  */
 function linkedListGenerator(){
-
+	var head = null;
+	var tail = null;
+	function getHead () {
+		return head;	
+	}
+	function getTail() {
+		return tail;
+	}
+	function add(value) {
+		var newNode =  {};
+		newNode.value = value;
+		newNode.next = null;
+		if(head !== null && head.value !== null && head.next === null) {
+			head.next = newNode;
+		}
+		if(head === null) {
+			head = newNode;
+		}
+		if (tail !== null){
+			tail.next = newNode;
+		}
+		tail = newNode;
+		return tail;
+	}
+	function get(number) {
+		var list = getHead();
+		var iterate = 0;
+		for(var i=1; i <= number; i++){
+			if(iterate < number) {
+				list = list.next;
+				iterate ++;
+			} 
+			if (list === null) {
+				return false;
+			}
+		}
+		return list;
+	}
+	function remove(number) {
+		 var current = get(number);
+		 var next = get(number + 1);
+		 var previous = get(number-1);
+		 if (current === false){
+		 	return false;
+		 } 
+		 if(current === tail) {
+		 	tail = previous;
+		 	tail.next = null;
+		 }
+		 if(current === head) {
+		 	head = next;
+		 }
+		 if(current !== head && current !== tail){
+		 	current = previous;
+		 	previous.next = next;
+		 }
+	}
+	function insert(value, number){
+		var newObj = {};
+		var next = get(number + 1);
+		var current = get(number);
+		newObj.value = value;
+		newObj.next = next;
+		current.next = newObj;
+	}
+	return {
+		getHead,
+		getTail,
+		add,
+		get,
+		remove,
+		insert,
+	};
 }
+
+var list = linkedListGenerator();
+list.add(1);
+list.add(2);
+list.add(3);
+list.add(4);
+console.log(list.insert('new', 0));
+//console.log(list.getHead());
+//console.log(list.getTail());
