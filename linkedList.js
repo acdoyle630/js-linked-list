@@ -56,10 +56,8 @@ function linkedListGenerator(){
 		 if(current === head) {
 		 	head = next;
 		 }
-		 if(current !== head && current !== tail){
 		 	current = previous;
 		 	previous.next = next;
-		 }
 	}
 	function insert(value, number){
 		if(get(number) === false || number < 0){
@@ -76,7 +74,7 @@ function linkedListGenerator(){
 		}
 		if (number !== 0 ){
 		current.next = newObj;
-	}
+		}
 		return head;
 	}
 	return {
