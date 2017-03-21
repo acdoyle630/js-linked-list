@@ -62,12 +62,22 @@ function linkedListGenerator(){
 		 }
 	}
 	function insert(value, number){
+		if(get(number) === false || number < 0){
+			return false;
+		}
 		var newObj = {};
-		var next = get(number + 1);
-		var current = get(number);
+		var next = get(number);
+		var current = get(number - 1);
 		newObj.value = value;
 		newObj.next = next;
+		if(number === 0) {
+			next = head;
+			head = newObj;
+		}
+		if (number !== 0 ){
 		current.next = newObj;
+	}
+		return head;
 	}
 	return {
 		getHead,
@@ -84,6 +94,5 @@ list.add(1);
 list.add(2);
 list.add(3);
 list.add(4);
-console.log(list.insert('new', 0));
-//console.log(list.getHead());
-//console.log(list.getTail());
+list.add(5);
+console.log(list.insert('new', -1));
