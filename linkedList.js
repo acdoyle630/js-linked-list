@@ -5,7 +5,8 @@
  */
 function linkedListGenerator(){
 	var head = null;
-	var tail = null;
+	var tail = null; 
+	// test
 	function getHead () {
 		return head;	
 	}
