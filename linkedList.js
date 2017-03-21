@@ -59,10 +59,8 @@ function linkedListGenerator(){
 		 if(current === head) {
 		 	head = next;
 		 }
-		 if(current !== head && current !== tail){
 		 	current = previous;
 		 	previous.next = next;
-		 }
 	}
 	function insert(value, number){
 		if(get(number) === false || number < 0){
@@ -79,7 +77,7 @@ function linkedListGenerator(){
 		}
 		if (number !== 0 ){
 		current.next = newObj;
-	}
+		}
 		return head;
 	}
 	function previous () {
@@ -92,8 +90,6 @@ function linkedListGenerator(){
 			list = list.next;
 			iterate++;
 		} 
-
-	console.log (head);
 	}
 	
 	return {
@@ -108,6 +104,20 @@ function linkedListGenerator(){
 
 }
 
+var test = linkedListGenerator();
+test.add(1);
+test.add(2);
+test.add(3);
+test.add(4);
+test.add(5);
+test.previous();
+//console.log(test.getHead());
+//console.log(test.get(3));
+test.remove (2);
+test.previous();
+console.log(test.getHead());
 
+
+	
 
 
